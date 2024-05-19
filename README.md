@@ -1,10 +1,10 @@
 # ETL PlayStation 1 Collection Tracker
 
-An ETL to extract and track PlayStation1 games of an collection.
+An ETL process to extract and track PlayStation 1 games from a collection.
 
 
 # Description
-PS1 games are extracted from the PlayStation Datacenter  website ([https://psxdatacenter.com/ntsc-u_list.html](https://psxdatacenter.com/ntsc-u_list.html)) using web scraping with the BeautifulSoup library. The data is then stored in a SQLite database using SQLAlchemy for the creation and population of the tables.
+PS1 games are extracted from the PlayStation Datacenter website ([https://psxdatacenter.com/ntsc-u_list.html](https://psxdatacenter.com/ntsc-u_list.html)) using web scraping with the BeautifulSoup library. The data is then stored in an SQLite database using SQLAlchemy for the creation and population of tables.
 
 The database stores the following information:
 
@@ -20,17 +20,17 @@ Additionally, the names of the games acquired by a hypothetical collector are ex
 ## Setup
 
 ### Google Sheets Acquired Games List
-We need to setup a GoogleSheets SpreadSheet that will store the acquired games. This Google Sheets needs to follow this model: 
+You need to set up a Google Sheets spreadsheet to store the acquired games. This Google Sheet should follow this model: 
 
 ![Google Sheets spreadsheet example](img/Screenshot_1.png)
 
-- A column containing the name of game and another containing "1" for the acquired ones or blank if not acquired. 
+- One column containing the name of the game and another containing "1" for acquired games or blank if not acquired. 
 
-You also need to generate an `credentials.json` file for authentication with Google. You can do it by following this tutorial [here](https://docs.gspread.org/en/latest/oauth2.html#for-bots-using-service-account).
+You also need to generate a `credentials.json` file for authentication with Google. You can do this by following the tutorial [here](https://docs.gspread.org/en/latest/oauth2.html#for-bots-using-service-account).
 
 ## Requirements
 
-The requirements are described on the `requirements.txt` file.
+The requirements are described in the `requirements.txt` file.
 
 It's advised to run this project using Docker.
 
@@ -51,18 +51,18 @@ The following environment variables are required.
 
 Important: 
 - The extracted and transformed directories will contain the data extracted and transformed by the ETL. 
-- You will need to fill `GOOGLE_SHEET_CREDENTIALS_PATH` with the credentials.json file for authentication that you generated before.
+- You will need to fill `GOOGLE_SHEET_CREDENTIALS_PATH` with the `credentials.json` file for authentication that you generated earlier.
 
 ## Executing
-We have two methods for running this project. The first one is using the `run.sh` file and the other one is using Airflow. We will briefly describe both of them next. 
+There are two methods for running this project. The first one is using the `run.sh` file, and the other one is using Airflow. We will briefly describe both methods below.
 
 ### Using `run.sh` file
-The `run.sh` will build the Dockerfile of this project and automatically run all the scripts of the project. The final result will be a SQLite Database containing all the structure of the project. 
+The `run.sh` will build the Dockerfile of this project and automatically run all the scripts of the project. The final result will be a SQLite Database containing all the project's data. 
 
-Keep in mind that you will need to create a `.env` file in the root of the project containing the environment variables describled above.
+Make sure to create a `.env` file in the root of the project containing the environment variables describled above.
 
 ### Using Airflow
-We also makes available an Airflow DAG. You can find it in the `dags` folder. It uses DockerOperator to run all the tasks of this project.
+We also provide an Airflow DAG, which you can find in the `dags` folder. It uses DockerOperator to run all the tasks of this project.
 
 ![Airflow graph of the DAG](img/Screenshot_2.png)
 
