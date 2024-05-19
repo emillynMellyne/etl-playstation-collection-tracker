@@ -64,6 +64,6 @@ Keep in mind that you will need to create a `.env` file in the root of the proje
 ### Using Airflow
 We also makes available an Airflow DAG. You can find it in the `dags` folder. It uses DockerOperator to run all the tasks of this project.
 
-![Airflow graph of the DAG](img/Screenshot_1.png)
+![Airflow graph of the DAG](img/Screenshot_2.png)
 
 
